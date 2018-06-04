@@ -10,6 +10,7 @@ const input = (state = initialState.input, action) => {
   return state;
 };
 
+export const getInput = state => state.input;
 const ping = (state = initialState.ping, action) => {
   if (action.type === SET_PING) {
     return action.ping;
