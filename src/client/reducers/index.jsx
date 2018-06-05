@@ -1,6 +1,6 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 
-import {SET_INPUT, SET_PING} from "../actions/types";
+import { SET_INPUT, SET_PING, } from "../actions/types";
 import initialState from "./initial-state";
 
 const input = (state = initialState.input, action) => {
@@ -17,7 +17,8 @@ const ping = (state = initialState.ping, action) => {
   }
   return state;
 };
+
 export default combineReducers({
-  input,
-  ping
+  ping,
+  input
 });

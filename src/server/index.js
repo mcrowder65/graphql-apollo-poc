@@ -1,35 +1,46 @@
+import Hapi from "hapi";
+import { graphqlHapi, graphiqlHapi } from "apollo-server-hapi";
 
-const Hapi = require("hapi");
+import schema from "./data/schema";
 
-// Create a server with a host and port
-const server = Hapi.server({
-  host: "localhost",
-  port: 3000
-});
+const HOST = "localhost";
+const PORT = 3000;
 
-// Add the route
-server.route({
-  method: "GET",
-  path: "/ping/{input}",
-  options: {
-    cors: true
-  },
-  handler(request) {
-    return `The server sees ${request.params.input} and says hello!`;
-  }
-});
+async function StartServer() {
+  const server = new Hapi.server({
+    host: HOST,
+    port: PORT
+  });
 
-// Start the server
-async function start() {
-
+  await server.register({
+    plugin: graphqlHapi,
+    options: {
+      path: "/graphql",
+      graphqlOptions: {
+        schema
+      },
+      route: {
+        cors: true
+      }
+    }
+  });
+  await server.register({
+    plugin: graphiqlHapi,
+    options: {
+      path: "/graphiql",
+      graphiqlOptions: {
+        schema,
+        endpointURL: "/graphql"
+      },
+    }
+  });
   try {
     await server.start();
   } catch (err) {
-    console.log(err);
-    process.exit(1);
+    console.log(`Error while starting server: ${err.message}`);
   }
 
-  console.log("Server running at:", server.info.uri);
+  console.log(`Server running at: ${server.info.uri}`);
 }
 
-start();
+StartServer();
