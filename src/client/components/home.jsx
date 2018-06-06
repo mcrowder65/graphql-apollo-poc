@@ -5,12 +5,13 @@ import { connect } from "react-redux";
 import { setInput } from "actions/index";
 import { PING_SERVER } from "actions/sagas/types";
 import styles from "styles/base.scss";
-import Item from "components/item";
+// import Item from "components/item";
 import FirstGraphqlComponent from "./first-graphql-component";
-const Home = props => {
+
+const Home = () => {
   return (
     <div className={styles.body}>
-      {props.input}<br/>
+      {/* {props.input}<br/>
       <input id="input"
         value={props.input}
         onChange={e => props.setInput(e.target.value)}
@@ -20,19 +21,19 @@ const Home = props => {
       <button onClick={props.pingServer}>Search Walmart</button>
       <br/>
 
-      <Item name="Hello world" itemId="Id!!"/>
+      <Item name="Hello world" itemId="Id!!"/> */}
 
       <FirstGraphqlComponent/>
     </div>
   );
 };
 
-Home.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  pingServer: PropTypes.func.isRequired,
-  ping: PropTypes.string.isRequired
-};
+// Home.propTypes = {
+//   input: PropTypes.string.isRequired,
+//   setInput: PropTypes.func.isRequired,
+//   pingServer: PropTypes.func.isRequired,
+//   ping: PropTypes.string.isRequired
+// };
 const mapStateToProps = state => {
   return {
     input: state.input,

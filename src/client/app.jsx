@@ -11,6 +11,7 @@ import rootReducer from "reducers/index";
 import Router from "router";
 import initialState from "reducers/initial-state";
 import apolloClient from "graphql/client";
+
 const sagaMiddleware = createSagaMiddleware();
 /* global window */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

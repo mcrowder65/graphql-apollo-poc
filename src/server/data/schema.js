@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from "graphql-tools";
 
 import resolvers from "./resolvers";
+
 const typeDefs = `
 type Query {
   item(itemId: String): Item

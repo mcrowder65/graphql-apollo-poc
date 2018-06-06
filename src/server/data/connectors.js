@@ -1,7 +1,6 @@
 import "isomorphic-fetch";
 // add this somewhere in the middle
 
-
 export const WalmartLabsApi = {
   async search(query) {
     const response = await fetch(`http://matthewjcrowder.com/search/${query}`, { method: "GET" });

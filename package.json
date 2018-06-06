@@ -56,6 +56,7 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "eslint-config-mcrowder65": "latest",
+    "eslint-plugin-graphql": "^2.1.1",
     "identity-obj-proxy": "3.0.0",
     "jest": "21.2.1",
     "nodemon": "^1.17.5",
@@ -72,11 +73,11 @@
     "extends": [
       "mcrowder65"
     ],
+    "plugins": [
+      "graphql"
+    ],
     "rules": {
-      "no-debugger": "off",
-      "no-invalid-this": 0,
-      "babel/no-invalid-this": 2,
-      "import/newline-after-import": ["error", { "count": 1 }]
+      "no-debugger": "off"
     }
   },
   "jest": {
