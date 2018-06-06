@@ -2,6 +2,8 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+import Item from "./item"
+;
 const QUERY = gql`
   query searchItems($searchQuery: String!) {
     searchItems(searchQuery: $searchQuery) {
@@ -26,14 +28,20 @@ class FirstGraphqlComponent extends React.Component {
         <Query query={QUERY} variables={{ searchQuery: this.state.input }} skip={!this.state.input}>
           {
             ({ loading, error, data }) => {
-              if (loading) return "Loading...";
+              if (this.state.input && loading) return "Loading...";
+              if (this.state.input && !data.searchItems || data.searchItems && data.searchItems.length === 0) {
+                return `${this.state.input} returned no results`;
+              }
               if (error) return `Error!: ${error}`;
               return (
                 <div>
                   {(data.searchItems || []).map((item, index) => {
                     return (
                       <div key={index}>
-                        {item.itemId} {item.name}
+                        <Item {...item} onClick={() => {
+                          console.log("click");
+                          browserHistory.push(`/item/${item.itemId}`);
+                        }}/>
                       </div>
                     );
                   }

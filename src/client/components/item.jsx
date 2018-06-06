@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Card from "@material-ui/core/Card";
+
+import styles from "styles/item";
 
 class Item extends React.Component {
   static propTypes = {
@@ -10,8 +13,10 @@ class Item extends React.Component {
     const { name, itemId } = this.props;
     return (
       <div>
-        name: {name} <br/>
-        itemId: {itemId}<br/>
+        <Card className={styles.card}>
+          name: {name} <br/>
+          itemId: {itemId}<br/>
+        </Card>
       </div>
     );
   }
