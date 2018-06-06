@@ -9,9 +9,9 @@ export const WalmartLabsApi = {
     return json.items;
   },
   async getItem(itemId) {
+    // return { itemId: `GraphQL read ${itemId}!` };
     const response = await fetch(`http://matthewjcrowder.com/itemLookup/${itemId}`, { method: "GET" });
     const json = await response.json();
-    debugger;
     return json;
   }
 };

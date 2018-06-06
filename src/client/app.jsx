@@ -1,15 +1,16 @@
+import "babel-polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore, applyMiddleware, compose} from "redux";
-import {Provider} from "react-redux";
-import "babel-polyfill";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
+import { ApolloProvider } from "react-apollo";
 
-import sagaActions from "./actions/sagas/index";
-import rootReducer from "./reducers/index";
-import Router from "./router";
-import initialState from "./reducers/initial-state";
-
+import sagaActions from "actions/sagas/index";
+import rootReducer from "reducers/index";
+import Router from "router";
+import initialState from "reducers/initial-state";
+import apolloClient from "graphql/client";
 const sagaMiddleware = createSagaMiddleware();
 /* global window */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,7 +23,9 @@ if (process.env.NODE_ENV === "development" && module.hot) {
 }
 const App = () => (
   <Provider store={store}>
-    <Router/>
+    <ApolloProvider client={apolloClient}>
+      <Router/>
+    </ApolloProvider>
   </Provider>
 );
 

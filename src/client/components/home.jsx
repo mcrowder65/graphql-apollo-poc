@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {setInput} from "../actions/index";
-import {PING_SERVER} from "../actions/sagas/types";
-import styles from "../styles/base.scss";
-
+import { setInput } from "actions/index";
+import { PING_SERVER } from "actions/sagas/types";
+import styles from "styles/base.scss";
+import Item from "components/item";
+import FirstGraphqlComponent from "./first-graphql-component";
 const Home = props => {
   return (
     <div className={styles.body}>
@@ -16,8 +17,12 @@ const Home = props => {
       /><br/>
 
       {props.ping}<br/>
-      <button onClick={props.pingServer}>PING SERVER</button>
+      <button onClick={props.pingServer}>Search Walmart</button>
       <br/>
+
+      <Item name="Hello world" itemId="Id!!"/>
+
+      <FirstGraphqlComponent/>
     </div>
   );
 };
@@ -38,7 +43,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setInput: input => dispatch(setInput(input)),
-    pingServer: () => dispatch({type: PING_SERVER})
+    pingServer: () => dispatch({ type: PING_SERVER })
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

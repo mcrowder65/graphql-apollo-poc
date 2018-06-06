@@ -1,7 +1,7 @@
-import { call, put, select} from "redux-saga/effects";
+import { call, put, select } from "redux-saga/effects";
 
 import { setPing } from "actions/index";
-import {getInput} from "reducers/index";
+import { getInput } from "reducers/index";
 
 export const apiCall = async input => {
   // this is up to you whether or not you want to implement this server...
@@ -9,7 +9,6 @@ export const apiCall = async input => {
   return res.text();
 };
 
-// eslint-disable-next-line
 export function* pingServer() {
   try {
     const input = yield select(getInput);

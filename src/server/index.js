@@ -32,6 +32,9 @@ async function StartServer() {
         schema,
         endpointURL: "/graphql"
       },
+      route: {
+        cors: true
+      }
     }
   });
   try {
