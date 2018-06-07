@@ -36,7 +36,6 @@ class Item extends React.Component {
   }
 
   getItemIdAndName = item => {
-    console.log(item);
     if (this.props.itemId && this.props.name) {
       return {
         itemId: this.props.itemId,
@@ -59,8 +58,6 @@ class Item extends React.Component {
               if (this.props.match.params.itemId && loading) return "Loading...";
               if (error) return `Error!: ${error}`;
               const { name, itemId } = this.getItemIdAndName(data.item);
-              console.log("name ", name);
-              console.log("itemId ", itemId);
               return (
                 <div>
                   <Card className={styles.card} onClick={onClick}>
